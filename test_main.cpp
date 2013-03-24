@@ -5,7 +5,7 @@
 #include "max_match_seg.h"
 #include "max_prob_seg.h"
 
-int main() {
+int main(int argc,char**argv) {
 	
 	//FILE *fp = fopen("C:\\Users\\Administrator\\Desktop\\wc\\seg_freq.txt","r");
 	//FILE *fp = fopen("dict_tmp.txt","r");
@@ -35,14 +35,18 @@ int main() {
 	/************************************************************************/
 	bolan_t bolan[MAX_WORD_PER_SENTENCE]; //必须要比实际词数多一个
 	max_match_seg_t mseg;
-	char *sent = "上地西路泰思特大厦";
+	//char *sent = "上地西路泰思特大厦";
+	char sent[100];
+	memset(sent,0,sizeof(sent));
+	strcpy(sent,argv[1]);
 	int count=0;
 	mseg.m_dict.load_dict("cc.dct");
 	mseg.cutsentence(sent,bolan,&count);
 	for(int i=0;i<count;++i) {
 		printf("%s\t",bolan[i].word/*,seger.m_bolan[i].ist*/);
 	}
-
+	
+	printf("\n");
 	//最大概率分词
 	max_prob_seg_t seger;
 

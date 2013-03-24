@@ -100,7 +100,7 @@ bool dict_t::slim(char*s,int *innercode) {
 	char buf[200];
 	for(i=0;l<=r;++i,++l) buf[i] = *l; 
 	buf[i] = '\0';
-	*innercode = gb2312_h((uint8_t)buf[0],(uint8_t)buf[1]);
+	*innercode = gb2312_h((_uint8_t)buf[0],(_uint8_t)buf[1]);
 	if(*innercode < 0) //³öÏÖ·Çºº×Ö
 		return false;
 	strcpy(s,buf);
